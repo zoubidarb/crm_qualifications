@@ -14,6 +14,8 @@
         'security/ir.model.access.csv',
         'views/crm_qualifications_leads_views.xml',
         'wizard/create_newLead_view.xml',
+        'report/report_action_retard.xml',
+        'report/action_retard.xml',
     ],
     'installable': True,
     'application': True,

@@ -12,6 +12,15 @@ class Lead_qualif(models.Model):
     date_reminder = fields.Date('Reminder Date', help="Date Reminder !")
     active_reminder = fields.Boolean('Active Reminder', default=False, track_visibility=True)
 
+    @api.model
+    def delay_lead(self):
+        var=datetime.now().date()
+        res=self.date_deadline
+        r=res - var
+        p= r.days
+        if  p < 0:
+            return True
+
     def _onchange_partner_id_values(self, partner_id):
         if partner_id:
             partner = self.env['res.partner'].browse(partner_id)
