@@ -3,12 +3,14 @@
 
 
 from datetime import datetime
-from odoo import api, models
+from odoo import api, models, fields
 
 
 class Lead_qualif(models.Model):
     _description = "Lead/Opportunity"
     _inherit = "crm.lead"
+    date_reminder = fields.Date('Reminder Date', help="Date Reminder !")
+    active_reminder = fields.Boolean('Active Reminder', default=False, track_visibility=True)
 
     def _onchange_partner_id_values(self, partner_id):
         if partner_id:

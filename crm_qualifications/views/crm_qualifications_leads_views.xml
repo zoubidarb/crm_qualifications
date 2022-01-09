@@ -5,4 +5,22 @@
     <field name="name">CRM Qualifications</field>
   </record>
 
+  <record id="crm_case_form_view_lead_inherit" model="ir.ui.view">
+    <field name="name">crm.lead.inherit</field>
+    <field name="model">crm.lead</field>
+    <field name="inherit_id" ref="crm.crm_case_form_view_leads" />
+    <field name="arch" type="xml">
+      <field name="website" position="after">
+        <field name="date_deadline" />
+      </field>
+      <notebook position="inside">
+        <page string="Reminder">
+          <field name="active_reminder" />
+          <i class="fa fa-calendar"></i>
+          <field name="date_deadline" readonly="1" force_save="1"/>
+        </page>
+      </notebook>
+    </field>
+  </record>
+
 </odoo>
