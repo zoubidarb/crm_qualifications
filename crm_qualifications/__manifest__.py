@@ -13,6 +13,7 @@
     'data': [
         'security/ir.model.access.csv',
         'views/crm_qualifications_leads_views.xml',
+        'wizard/create_newLead_view.xml',
     ],
     'installable': True,
     'application': True,

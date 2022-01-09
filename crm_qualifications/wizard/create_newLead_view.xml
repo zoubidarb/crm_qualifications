@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<odoo>
+   
+    <record id="crm.crm_case_form_view_leads" model="ir.ui.view">
+    </record>
+    <record id="crm_lead_New_action" model="ir.actions.act_window">
+        <field name="name">New Lead</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">crm.lead.new</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="crm.crm_case_form_view_leads" />
+        <field name="target">new</field>
+    </record> 
+    
+</odoo>
