@@ -17,10 +17,67 @@
         <page string="Reminder">
           <field name="active_reminder" />
           <i class="fa fa-calendar"></i>
-          <field name="date_deadline" readonly="1" force_save="1"/>
+          <field name="date_deadline" readonly="1" force_save="1" />
         </page>
       </notebook>
     </field>
   </record>
+
+  <record id="view_partners_form_crm1" model="ir.ui.view">
+    <field name="name">view.res.partner.form.crm.inherited1</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_partner_form" />
+    <field eval="1" name="priority" />
+    <field name="groups_id" eval="[(4, ref('sales_team.group_sale_salesman'))]" />
+    <field name="arch" type="xml">
+      <xpath expr="//page[3]" position="after">
+        <page name="crm_qualification" string="CRM Qualification">
+          <group>
+            <form>
+              <group>
+                <field name="lead_ids" mode="kanban" context="{'default_lead_id': active_id}" nolabel="1">
+                  <kanban>
+                    <templates>
+                      <t t-name="kanban-box">
+                        <div>
+                          <div class="oe_kanban_details">
+                            <div>
+                              <span>
+                                <input type="checkbox" checked="active_reminder.html" disabled="disabled" />
+                              </span>
+                              <span style="margin-left:30px;">
+                                <i class="fa fa-calendar"></i>
+                                <field name="date_deadline" />
+                              </span>
+                              <span style="margin-left:100px;">
+                                <b>
+                                  <field name="name" />
+                                </b>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </t>
+                    </templates>
+                  </kanban>
+                </field>
+              </group>
+            </form>
+          </group>
+        </page>
+      </xpath>
+      <data>
+        <button name="toggle_active" position="before">
+          <button class="oe_stat_button o_res_partner_tip_opp" type="action" attrs="{'invisible': [('customer', '=', False)]}" name="%(crm.crm_lead_opportunities)d" icon="fa-star" groups="sales_team.group_sale_salesman" context="{'search_default_partner_id': active_id}">
+            <field string="Opportunities" name="opportunity_count" widget="statinfo" />
+          </button>
+          <button class="oe_stat_button" type="object" name="schedule_meeting" icon="fa-calendar" groups="sales_team.group_sale_salesman" context="{'partner_id': active_id, 'partner_name': name}">
+            <field string="Meetings" name="meeting_count" widget="statinfo" />
+          </button>
+        </button>
+      </data>
+    </field>
+  </record>
+
 
 </odoo>
