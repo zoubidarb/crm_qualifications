@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<odoo>
+    <template id="action_retard" name="lead_action_retard">
+        <t t-call="website.layout">
+            <div class="container">
+
+                <div class="row mt-2" style="background-color:#F9F9F9">
+                    <div class="col-6">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb" style="background-color:transparent;">
+                                <li class="breadcrumb-item">
+                                    <a href="#">
+                                        <i class="fa fa-home"></i>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">Pistes: Tâches en retard</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="col-6">
+                        <div class="dropdown mt-2 pull-right">
+                            Trier Par :
+                            <button class="btn btn-primary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Date de la commande
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Date de la commande</a>
+                                <a class="dropdown-item" href="#">Autres ...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Piste____________</th>
+                            <th>Date______________</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="Customer" t-as="cust">
+                            <t t-if="cust.date_deadline">
+                                <t t-if="cust.delay_lead()">
+                                    <tr>
+                                        <td>
+                                            <t t-esc="cust.name" />
+                                        </td>
+                                        <td>
+                                            <t t-esc="cust.date_deadline" />
+                                        </td>
+                                    </tr>
+                                </t>
+                            </t>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+
+        </t>
+    </template>
+</odoo>

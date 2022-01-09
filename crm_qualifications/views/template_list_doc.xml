@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<odoo>
+    <template id="crm_list_doc" name="crm_list_doc">
+        <t t-call="website.layout">
+            <div class="container mt-2">
+
+                <div class="col-6">
+                    <a class="dropdown-item disabled" href="#">Bon de commandes <span class="badge badge-pill badge-warning pull-right">1</span></a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item disabled" href="#">Factures <span class="badge badge-pill badge-warning pull-right">1</span></a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" t-attf-href="/crm/piste_retard/">Pistes: Taches en retard <span class="badge badge-pill badge-secondary pull-right"><t t-esc="count_pistes" /></span></a>
+                  </div>
+
+            </div>
+        </t>
+    </template>
+</odoo>

@@ -16,6 +16,8 @@
         'wizard/create_newLead_view.xml',
         'report/report_action_retard.xml',
         'report/action_retard.xml',
+        'views/template_action_retard.xml',
+        'views/template_list_doc.xml',
     ],
     'installable': True,
     'application': True,
